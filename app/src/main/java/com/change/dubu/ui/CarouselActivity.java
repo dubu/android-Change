@@ -49,6 +49,10 @@ public class CarouselActivity extends BootstrapFragmentActivity {
                 final Intent i = new Intent(this, BootstrapTimerActivity.class);
                 startActivity(i);
                 return true;
+            case id.change:
+                final Intent c = new Intent(this, ChangeActivity.class);
+                startActivity(c);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

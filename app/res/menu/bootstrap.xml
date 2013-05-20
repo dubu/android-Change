@@ -18,6 +18,13 @@
     </item>
 
     <item
+            android:id="@+id/change"
+            android:icon="@drawable/abs__ic_go"
+            android:showAsAction="always"
+            android:title="@string/change">
+    </item>
+
+    <item
         android:id="@+id/logout"
         android:showAsAction="never"
         android:title="@string/logout_action" >
