@@ -1,14 +1,6 @@
 
 package com.change.dubu.core;
 
-import static com.change.dubu.core.Constants.Http.HEADER_PARSE_APP_ID;
-import static com.change.dubu.core.Constants.Http.HEADER_PARSE_REST_API_KEY;
-import static com.change.dubu.core.Constants.Http.PARSE_APP_ID;
-import static com.change.dubu.core.Constants.Http.PARSE_REST_API_KEY;
-import static com.change.dubu.core.Constants.Http.URL_CHECKINS;
-import static com.change.dubu.core.Constants.Http.URL_NEWS;
-import static com.change.dubu.core.Constants.Http.URL_USERS;
-
 import com.github.kevinsawicki.http.HttpRequest;
 import com.github.kevinsawicki.http.HttpRequest.HttpRequestException;
 import com.google.gson.Gson;
@@ -19,6 +11,8 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.Collections;
 import java.util.List;
+
+import static com.change.dubu.core.Constants.Http.*;
 
 /**
  * Bootstrap API service
@@ -211,6 +205,20 @@ public class BootstrapService {
         }
     }
 
+
+    public boolean addUsers() throws IOException {
+        try {
+            HttpRequest request = HttpRequest.post(URL_USERS);
+            addCredentialsTo(request);
+            request.header(USERNAME,username);
+            request.header(PASSWORD,password);
+
+            return request.ok();
+            //return Collections.emptyList();
+        } catch (HttpRequestException e) {
+            throw e.getCause();
+        }
+    }
     /**
      * Get all bootstrap Checkins that exists on Parse.com
      *

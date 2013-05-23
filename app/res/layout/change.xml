@@ -1,40 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
 
     <TextView
-            android:layout_width="100dp"
+            android:layout_width="50dp"
             android:layout_height="20dp"
             android:text="상괘"
             android:id="@+id/txt_up" android:layout_alignParentLeft="true" android:layout_marginLeft="17dp"
-            android:layout_alignParentTop="true" android:layout_marginTop="16dp"/>
+            android:layout_alignParentTop="true" android:layout_marginTop="50dp"/>
+    <Button
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:text="click"
+            android:id="@+id/btn_up" android:layout_toRightOf="@+id/txt_up"
+            android:layout_alignBottom="@+id/txt_up" android:textColor="@android:color/black"
+            android:background="@android:color/white"/>
+    <Button
+            android:layout_width="70dp"
+            android:layout_height="50dp"
+            android:text="click"
+            android:id="@+id/btn_down" android:layout_toRightOf="@+id/txt_up"
+            android:layout_alignBottom="@+id/txt_down" android:background="@android:color/black"/>
     <TextView
-            android:layout_width="100dp"
+            android:layout_width="50dp"
             android:layout_height="20dp"
             android:text="하괘"
             android:id="@+id/txt_down"
             android:layout_alignLeft="@+id/txt_up" android:layout_below="@+id/txt_up"
-            android:layout_marginTop="50dp"/>
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="click"
-            android:id="@+id/btn_up" android:layout_toRightOf="@+id/txt_up"
-            android:layout_alignBottom="@+id/txt_up"/>
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="click"
-            android:id="@+id/btn_down" android:layout_toRightOf="@+id/txt_up"
-            android:layout_alignBottom="@+id/txt_down"/>
-    <EditText
+            android:layout_marginTop="50dp" android:layout_marginBottom="30dp"
+            android:textColor="@android:color/black"/>
+    <TextView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:text="New EditText"
+            android:text="해설"
             android:id="@+id/txt_cont"
             android:layout_alignParentLeft="true"
-            android:layout_below="@+id/txt_down" android:layout_marginTop="50dp" android:inputType="textMultiLine"
+            android:layout_below="@+id/txt_down" android:inputType="textMultiLine"
+            android:background="@android:color/black" android:enabled="false" android:editable="false"
+            android:gravity="center"/>
+    <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="풀이"
+            android:id="@+id/btn_desc"
+            android:layout_toRightOf="@+id/btn_up" android:layout_alignTop="@+id/btn_up"
+            android:layout_marginLeft="40dp" android:layout_alignBottom="@+id/btn_down"
             android:background="@android:color/black"/>
 </RelativeLayout>

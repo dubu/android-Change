@@ -30,6 +30,11 @@ public class ChangeActivity extends BootstrapFragmentActivity implements View.On
     @InjectView(R.id.btn_up) protected Button btnUp;
     @InjectView(R.id.btn_down) protected Button btnDown;
 
+
+    @InjectView(R.id.btn_desc) protected Button btnDesc;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Changes.P001010.desc = "수산건, 힘든 상황인데 용쓰는 모양. 안쓰럽네. 달리려하나 다리가 말을 듣지 않는다. 절름발이 상태.";
@@ -105,6 +110,7 @@ public class ChangeActivity extends BootstrapFragmentActivity implements View.On
 
         btnUp.setOnClickListener(this);
         btnDown.setOnClickListener(this);
+        btnDesc.setOnClickListener(this);
     }
 
     @Override
@@ -128,6 +134,9 @@ public class ChangeActivity extends BootstrapFragmentActivity implements View.On
             case R.id.btn_down:
                 generateChangeDown();
                 break;
+            case R.id.btn_desc:
+                descChange();
+                break;
         }
     }
 
@@ -137,22 +146,7 @@ public class ChangeActivity extends BootstrapFragmentActivity implements View.On
         int upRanNum = rand.nextInt(DubuChanges.values().length);
         DubuChanges up = DubuChanges.values()[upRanNum];
         txtUp.setText(up.name);
-
-        descChange();
-
-    }
-
-    private void descChange() {
-
-        String up = txtUp.getText().toString();
-        String down = txtDown.getText().toString();
-
-
-
-        Changes rs = Changes.findName(up+down);
-        if(rs != null){
-            txtCont.setText(rs.toString());
-        }
+        clearDesc();
     }
 
     private void generateChangeDown() {
@@ -160,9 +154,24 @@ public class ChangeActivity extends BootstrapFragmentActivity implements View.On
         int downRanNum = rand.nextInt(DubuChanges.values().length);
         DubuChanges down = DubuChanges.values()[downRanNum];
         txtDown.setText(down.name);
-
-        descChange();
+        clearDesc();
     }
+
+    private void clearDesc() {
+        txtCont.setText("");
+    }
+
+    private void descChange() {
+
+        String up = txtUp.getText().toString();
+        String down = txtDown.getText().toString();
+        Changes rs = Changes.findName(up+down);
+        if(rs != null){
+            txtCont.setText(rs.toString());
+        }
+    }
+
+
 
     public enum Changes {
 
