@@ -165,7 +165,7 @@ public class ChangeActivity extends BootstrapFragmentActivity implements View.On
 
         String up = txtUp.getText().toString();
         String down = txtDown.getText().toString();
-        Changes rs = Changes.findName(up+down);
+        Changes rs = Changes.findName(down+up);
         if(rs != null){
             txtCont.setText(rs.toString());
         }

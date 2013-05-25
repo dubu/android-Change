@@ -65,8 +65,8 @@ public class Constants {
          */
         public static final String URL_CHECKINS = URL_BASE + "/1/classes/Locations";
 
-        public static final String PARSE_APP_ID = "2H847uPdm5TNwkAlUHB0igF5kw3xXSdcjXzFUtGt";
-        public static final String PARSE_REST_API_KEY = "S48bYyCWLpl38kPZG0YsoCNrIh0zEtaAPrAZtuaI";
+        public static final String PARSE_APP_ID = "L6O6sQB20g4CsKjMk8szuRjL4PPXkzKoPKUUJWWT";
+        public static final String PARSE_REST_API_KEY = "v3Vra05KqlCGrbvVxQ1GSTMuuOMXBKBXr2e7m0f2";
         public static final String HEADER_PARSE_APP_ID = "X-Parse-Application-Id";
         public static final String HEADER_PARSE_REST_API_KEY = "X-Parse-REST-API-Key";
         public static final String CONTENT_TYPE_JSON = "application/json";
