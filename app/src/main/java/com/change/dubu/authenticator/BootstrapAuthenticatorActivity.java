@@ -138,6 +138,11 @@ public class BootstrapAuthenticatorActivity extends SherlockAccountAuthenticator
 
         Views.inject(this);
 
+        // don't use login page
+        emailText.setText("guest");
+        passwordText.setText("guest");
+        handleLogin(signinButton);
+
         emailText.setAdapter(new ArrayAdapter<String>(this,
                 simple_dropdown_item_1line, userEmailAccounts()));
 
