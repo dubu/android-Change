@@ -61,6 +61,11 @@ public class Constants {
         public static final String URL_NEWS = URL_BASE + "/1/classes/News";
 
         /**
+         * List News URL
+         */
+        public static final String URL_Book = URL_BASE + "/1/classes/Book";
+
+        /**
          * List Checkin's URL
          */
         public static final String URL_CHECKINS = URL_BASE + "/1/classes/Locations";
@@ -73,7 +78,6 @@ public class Constants {
         public static final String USERNAME = "username";
         public static final String PASSWORD = "password";
         public static final String SESSION_TOKEN = "sessionToken";
-
 
     }
 

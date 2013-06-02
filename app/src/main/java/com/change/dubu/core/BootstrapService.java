@@ -1,16 +1,20 @@
 
 package com.change.dubu.core;
 
+import android.util.Log;
 import com.github.kevinsawicki.http.HttpRequest;
 import com.github.kevinsawicki.http.HttpRequest.HttpRequestException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParseException;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.message.BasicNameValuePair;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.util.Collections;
-import java.util.List;
+import java.net.URLEncoder;
+import java.util.*;
 
 import static com.change.dubu.core.Constants.Http.*;
 
@@ -205,6 +209,49 @@ public class BootstrapService {
         }
     }
 
+    /**
+     * Get all bootstrap News that exists on Parse.com
+     *
+     * @return non-null but possibly empty list of bootstrap
+     * @throws IOException
+     */
+    public List<News> getBooks() throws IOException {
+        try {
+            HttpRequest request = execute(HttpRequest.get(URL_Book));
+            NewsWrapper response = fromJson(request, NewsWrapper.class);
+            if (response != null && response.results != null)
+                return response.results;
+            return Collections.emptyList();
+        } catch (HttpRequestException e) {
+            throw e.getCause();
+        }
+    }
+
+    public boolean addBooks(News newsObject) throws IOException {
+        try {
+            HttpRequest request = configure(HttpRequest.post(URL_Book));
+            String data = "{\"title\":\""+URLEncoder.encode(newsObject.getTitle(),"UTF-8")
+                    +"\",\"content\":\""+ URLEncoder.encode(newsObject.getContent(),"UTF-8")+"\"}";
+            request.send(data);
+            return request.ok();
+        } catch (HttpRequestException e) {
+            throw e.getCause();
+        }
+    }
+
+    public boolean editBooks(News newsObject) throws IOException {
+        try {
+            String tailUrl = "/"+newsObject.getObjectId();
+            HttpRequest request = configure(HttpRequest.put(URL_Book+tailUrl));
+            String data = "{\"title\":\""+newsObject.getTitle()
+                    +"\",\"content\":\""+ newsObject.getContent()+"\"}";
+            data = data.replace("\n", "\\n");
+            request.send(data);
+            return request.ok();
+        } catch (HttpRequestException e) {
+            throw e.getCause();
+        }
+    }
 
     public boolean addUsers() throws IOException {
         try {

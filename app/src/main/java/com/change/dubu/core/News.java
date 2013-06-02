@@ -9,6 +9,7 @@ public class News implements Serializable {
     private String title;
     private String content;
     private String objectId;
+    private String updatedAt;
 
     public String getTitle() {
         return title;
@@ -32,5 +33,9 @@ public class News implements Serializable {
 
     public void setObjectId(String objectId) {
         this.objectId = objectId;
+    }
+
+    public String getUpdatedAt() {
+        return updatedAt;
     }
 }
